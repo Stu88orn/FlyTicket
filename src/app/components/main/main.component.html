@@ -1,0 +1,95 @@
+<p class="main__info">{{title__main}}</p>
+<mat-stepper orientation="vertical" [linear]="true" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Szukaj Połączenia</ng-template>
+      <ng-template matStepContent>
+        <div class="container">
+          <div class="row g-3">
+            <div class="col main__page">
+              <input matInput type="text" class="form-control" placeholder="Departure" aria-label="Departure"
+                formControlName="firstCtrl" required>
+            </div>
+            <div class="col">
+              <input matInput type="text" class="form-control" placeholder="Arrival" aria-label="Arrival"
+                formControlName="firstCtrl" required>
+            </div>
+            <div class="col">
+              <input matInput type="date" class="form-control" placeholder="Date" aria-label="Date"
+                formControlName="firstCtrl" required>
+            </div>
+            <button class="btn btn-primary" mat-button matStepperNext>{{nextButton}}</button>
+          </div>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Wybor Lotów</ng-template>
+      <ng-template matStepContent>
+        <div class="container mt-3">
+          <div class="row">
+            <header>
+              <h3 class="main__info mt-5 ">{{title__flightList}} KTH --> MUN Date: 01-05-2022</h3>
+            </header>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Lp</th>
+                  <th scope="col">Flight Number</th>
+                  <th scope="col">Carrier</th>
+                  <th scope="col">AirPlane</th>
+                  <th scope="col">Date And Hour Departure</th>
+                  <th scope="col">Choose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>956</td>
+                  <td>WizzAir</td>
+                  <td>Boeing 737-800</td>
+                  <td>01-05-2022 : 12:00</td>
+                  <td><button class="btn btn-primary" matStepperNext>Reserve</button></td>
+                </tr>
+              </tbody>
+            </table>
+            <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
+          </div>
+        </div>
+      </ng-template>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Wybor Miejsca</ng-template>
+    <app-airbus-a320></app-airbus-a320>
+    <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
+    <button class="btn btn-primary" mat-button matStepperNext>Next</button>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Passangers</ng-template>
+    <div class="container mt-3">
+      <div class="row">
+        <h3>{{title__passengersDetails}}</h3>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="First Name" aria-label="First Name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Passport" aria-label="Passport">
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault"></label>
+          </div>
+        </div>
+        <button class="btn btn-primary mt-3">{{reservationButton}}</button>
+        <button class="btn btn-primary mt-3" mat-button matStepperPrevious>Back</button>
+      </div>
+    </div>
+  </mat-step>
+</mat-stepper>
