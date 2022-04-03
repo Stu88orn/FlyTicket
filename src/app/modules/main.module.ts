@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from '../components/main/main.component';
 import { AirbusA320Component } from '../components/airplanes/airbus-a320/airbus-a320.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   exports:[
     MainComponent,

@@ -1,3 +1,9 @@
+<button class="btn btn-primary" (click)="getCity()">Pobierz Miasto</button>
+<h2>{{depCity}}</h2>
+
+<button class="btn btn-primary" (click)="getFlights()">Pobierz Lot</button>
+<h2>{{departure}}test</h2>
+
 <p class="main__info">{{title__main}}</p>
 <mat-stepper orientation="vertical" [linear]="true" #stepper>
   <mat-step [stepControl]="firstFormGroup">
@@ -24,8 +30,8 @@
       </ng-template>
     </form>
   </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
+  <mat-step >
+
       <ng-template matStepLabel>Wybor Lotów</ng-template>
       <ng-template matStepContent>
         <div class="container mt-3">
@@ -59,13 +65,14 @@
           </div>
         </div>
       </ng-template>
-    </form>
-  </mat-step>
-  <mat-step>
+  </mat-step >
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup">
     <ng-template matStepLabel>Wybor Miejsca</ng-template>
     <app-airbus-a320></app-airbus-a320>
     <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
     <button class="btn btn-primary" mat-button matStepperNext>Next</button>
+  </form>
   </mat-step>
   <mat-step>
     <ng-template matStepLabel>Passangers</ng-template>

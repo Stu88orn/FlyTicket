@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: "https://airlabs.co/api/v9/",
+  apiKEY: "api_key=24b3cf3c-62f3-481c-afb1-a087a136c642"
 };
 
 /*
