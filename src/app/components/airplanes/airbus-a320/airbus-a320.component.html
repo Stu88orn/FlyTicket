@@ -1,0 +1,109 @@
+<div class="container mt-3">
+  <div class="row">
+    <header>
+      <h3 class="main__info mt-5 ">{{title__seatList}}</h3>
+    </header>
+    <div class="col-3">
+      <div class="border__choosePlace">
+        <div>Samolot typu: Boeing 737-800</div>
+        <div class="mt-2">Wybrane miejsca: ilosc</div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="border__airplaneSeat">
+        <div class="row">
+          <div class=" col-5">
+            <div class="row ms-4 mt-3 gap-2">
+              <div class="places__row">I</div>
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row ms-4 gap-2">
+              <div class="places__row">II</div>
+              <div class="places">12</div>
+              <div class="places">13</div>
+              <div class="places">14</div>
+              <div class="places">15</div>
+            </div>
+            <div class="row ms-4 gap-2">
+              <div class="places__row">III</div>
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row ms-4 gap-2">
+              <div class="places__row">IV</div>
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row mt-3 gap-2">
+              <div class="places">5</div>
+              <div class="places">6</div>
+              <div class="places">7</div>
+              <div class="places">8</div>
+            </div>
+            <div class="row gap-2 ">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row gap-2">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row gap-2">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="row mt-3 gap-2">
+              <div class="places">9</div>
+              <div class="places">10</div>
+              <div class="places">11</div>
+              <div class="places">12</div>
+            </div>
+            <div class="row gap-2">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row gap-2">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places">4</div>
+            </div>
+            <div class="row gap-2">
+              <div class="places">1</div>
+              <div class="places">2</div>
+              <div class="places">3</div>
+              <div class="places mb-3 ">4</div>
+            </div>
+          </div>
+        </div>
+        <div class="d-flex flex-wrap">
+          <div class="places gap-5" *ngFor="let divData of dataSource"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <div id="content">
+
+  </div>
+  <button (click)="onAddSeat()">Add</button>
+</div>

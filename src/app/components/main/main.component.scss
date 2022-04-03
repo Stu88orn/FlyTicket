@@ -1,0 +1,21 @@
+$base-color: #c6538c;
+$margin__top__elements: 50px;
+$border__choose__seat: 2px solid black;
+
+.main__page{
+  height: 60px;
+}
+
+.container input{
+  margin-top: $margin__top__elements;
+}
+
+.inputField:hover{
+  box-shadow: $base-color;
+}
+
+.container p{
+  font-size: 4rem;
+}
+
+

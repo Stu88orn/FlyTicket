@@ -1,0 +1,25 @@
+$base-color: #c6538c;
+$margin__top__elements: 50px;
+$border__choose__seat: 2px solid black;
+
+.border__airplaneSeat{
+  border: $border__choose__seat;
+}
+
+.border__choosePlace{
+  border: $border__choose__seat;
+}
+
+.places{
+  height: 50px;
+  width: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2px;
+}
+
+.places__row{
+  height: 50px;
+  width: 50px;
+  margin: 2px;
+}
