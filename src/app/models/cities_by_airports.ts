@@ -1,4 +1,4 @@
-export type Cities = {
+export type Cities_by_airports = {
   name: string;
   lat: number;
   lng: number;

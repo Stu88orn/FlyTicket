@@ -1,23 +1,34 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
-import { environment } from 'src/environments/environment';
-import { Flight } from 'src/app/models/flight';
+import {CityResponse} from '../../models/cityResponse';
+import {FlightResponse} from '../../models/flightResponse';
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
+import {environment} from 'src/environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class FlightService {
-  scheules: string =  'schedules/?';
-  dep_iata : string = 'dep_iata=';
-  arr_iata : string = 'arr_iata=';
+  scheules: string = 'schedules/?';
+  dep_iata: string = 'dep_iata=';
+  arr_iata: string = 'arr_iata=';
 
-  constructor(private http:HttpClient) { }
-
-  getCity(city:string){
-      return this.http.get(`${environment.apiUrl}${city}&${environment.apiKEY}`)
+  constructor(private http: HttpClient) {
   }
 
-  getFlight(depCity:string, arrCity:string){
-    return this.http.get<Flight[]>(`${environment.apiUrl}${this.scheules}${this.dep_iata}${depCity}&${this.arr_iata}${arrCity}&${environment.apiKEY}`)
+  getCityBySugest(city: string) {
+    return this.http.get(`${environment.apiUrl}suggest?q=${city}&${environment.apiKEY}`)
+  }
+
+  getCityBySearch(city: string) {
+    return this.http.get<CityResponse>(`${environment.apiUrl}suggest?search=${city}&${environment.apiKEY}`)
+  }
+
+  getFlight(depCity: string | undefined, arrCity: string | undefined) {
+    return this.http.get<FlightResponse>(`${environment.apiUrl}routes/?${environment.apiKEY}&dep_iata=${depCity}&arr_iata=${arrCity}`)
+  }
+
+  getFlightScheules(depCity: string | undefined, arrCity: string | undefined) {
+    return this.http.get<FlightResponse>(`${environment.apiUrl}${this.scheules}${this.dep_iata}${depCity}&${this.arr_iata}${arrCity}&${environment.apiKEY}`)
   }
 }

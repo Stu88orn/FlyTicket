@@ -1,29 +1,23 @@
 export type Flight = {
   airline_iata: string;
   airline_icao: string;
+  flight_number: string;
   flight_iata: string;
   flight_icao: string;
-  flight_number: string;
+  cs_airline_iata: string;
+  cs_flight_iata: string;
+  cs_flight_number: string;
   dep_iata: string;
   dep_icao: string;
-  dep_terminal: string;
-  dep_gate: string;
+  dep_terminals: string[];
   dep_time: string;
   dep_time_utc: string;
   arr_iata: string;
   arr_icao: string;
-  arr_terminal: string;
-  arr_gate: string;
-  arr_baggage: string;
+  arr_terminals: string;
   arr_time: string;
   arr_time_utc: string;
-  cs_airline_iata: string;
-  cs_flight_number: string;
-  cs_flight_iata: string;
-  status: string;
-  duration: number;
-  delayed: string;
+  duration: string;
+  days: string[];
   aircraft_icao: string;
-  arr_time_ts: number;
-  dep_time_ts: number;
 }

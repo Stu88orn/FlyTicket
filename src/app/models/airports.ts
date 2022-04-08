@@ -1,5 +1,7 @@
-export type Cities = {
+export type Airports = {
   name: string;
+  iata_code: string;
+  icao_code: string;
   lat: number;
   lng: number;
   slug: string;
