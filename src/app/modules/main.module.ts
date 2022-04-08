@@ -4,6 +4,9 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from '../components/main/main.component';
 import { AirbusA320Component } from '../components/airplanes/airbus-a320/airbus-a320.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Boeing787Component } from '../components/airplanes/boeing787/boeing787.component';
+import { EmbraerComponent } from '../components/airplanes/embraer/embraer.component';
+
 
 
 
@@ -11,6 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     MainComponent,
     AirbusA320Component,
+    Boeing787Component,
+    EmbraerComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +24,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   exports:[
     MainComponent,
-    AirbusA320Component
+    AirbusA320Component,
+    Boeing787Component,
+    EmbraerComponent
   ]
 })
 export class MainModule { }
