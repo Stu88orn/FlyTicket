@@ -125,7 +125,16 @@
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Wybor Miejsca</ng-template>
-      <app-airbus-a320></app-airbus-a320>
+      <ng-template>
+        <app-airbus-a320></app-airbus-a320>
+      </ng-template>
+      <ng-template>
+        <app-boeing787></app-boeing787>
+      </ng-template>
+      <ng-template>
+        <app-embraer></app-embraer>
+      </ng-template>
+
       <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
       <button class="btn btn-primary" mat-button matStepperNext>Next</button>
     </form>
