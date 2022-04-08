@@ -16,6 +16,7 @@ export class AirbusA320Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
   onAddSeat(){

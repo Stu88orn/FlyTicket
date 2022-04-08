@@ -11,6 +11,18 @@ html {
 	font-size: 16px;
 }
 
+h3 {
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
 .plane {
 	margin: 20px auto;
 	max-width: 250px;
@@ -112,7 +124,7 @@ ol {
 		width: 100%;
 		text-align: center;
 		font-size: 14px;
-		font-weight: bold;
+		// font-weight: bold;
 		line-height: 1.5rem;
 		padding: 4px 0;
 		background: #208828;
@@ -126,7 +138,7 @@ ol {
 		width: 100%;
 		text-align: center;
 		font-size: 14px;
-		font-weight: bold;
+		// font-weight: bold;
 		line-height: 1.5rem;
 		padding: 4px 0;
 		background: #d40000;
@@ -135,6 +147,23 @@ ol {
 	}
 }
 
-
+.btn {
+  display: flex;
+  justify-content: center;
+  margin-left: 150px;
+  align-items: center;
+  position: absolute;
+  margin-top: 10px;
+  margin-right: 0;
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.5rem;
+  padding: 4px 0;
+  background: #d8d8d8;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
 
