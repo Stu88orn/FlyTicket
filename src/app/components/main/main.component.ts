@@ -21,6 +21,10 @@ export class MainComponent implements OnInit {
 
   constructor(private formBuilder:FormBuilder) { }
 
+// BLOKADA DATY
+
+
+
   ngOnInit(): void {
     this.firstFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -29,6 +33,8 @@ export class MainComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
   }
+
+
 
 
 }
