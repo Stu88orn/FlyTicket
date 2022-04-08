@@ -25,7 +25,7 @@ h3 {
 
 .plane {
 	margin: 20px auto;
-	max-width: 300px;
+	max-width: 400px;
 }
 
 .cockpit {
@@ -105,14 +105,16 @@ ol {
 
 .seat {
 	display: flex;
-	flex: 0 0 11%;
+	flex: 0 0 9%;
 	padding: 3px;
+  margin-left: -5px;
 	position: relative;
-  margin-left: -4px;
-
 
 	&:nth-child(3) {
-		margin-right: 20%;
+		margin-right: 7%;
+	}
+    &:nth-child(6) {
+		margin-right: 7%;
 	}
 
 	input[type='checkbox'] {
@@ -147,15 +149,12 @@ ol {
 		border-radius: 5px;
 		cursor: pointer;
 	}
-
-
-
 }
 
 .btn {
   display: flex;
   justify-content: center;
-  margin-left: 200px;
+  margin-left: 300px;
   align-items: center;
   position: absolute;
   margin-top: 10px;

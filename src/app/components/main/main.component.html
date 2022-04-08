@@ -8,15 +8,15 @@
           <div class="row g-3">
             <div class="col main__page">
               <input matInput type="text" class="form-control" placeholder="Departure" aria-label="Departure"
-                formControlName="firstCtrl" required>
+                formControlName="firstCtrl" >
             </div>
             <div class="col">
               <input matInput type="text" class="form-control" placeholder="Arrival" aria-label="Arrival"
-                formControlName="firstCtrl" required>
+                formControlName="firstCtrl" >
             </div>
             <div class="col">
               <input matInput type="date" class="form-control" placeholder="Date" aria-label="Date"
-                formControlName="firstCtrl" required>
+                formControlName="firstCtrl" >
             </div>
             <button class="btn btn-primary" mat-button matStepperNext>{{nextButton}}</button>
           </div>
@@ -93,3 +93,9 @@
     </div>
   </mat-step>
 </mat-stepper>
+
+
+
+<app-airbus-a320></app-airbus-a320>
+<app-boeing787></app-boeing787>
+<app-embraer></app-embraer>
