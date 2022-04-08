@@ -30,4 +30,4 @@ import { AirbusA320Component } from '../components/airplanes/airbus-a320/airbus-
     EmbraerComponent
   ]
 })
-export class MainModule { }
+export class MainModule {}

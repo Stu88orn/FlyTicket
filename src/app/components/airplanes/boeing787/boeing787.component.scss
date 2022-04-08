@@ -86,7 +86,7 @@ ol {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: flex-start;
-    justify-content: center;
+  justify-content: center;
 }
 
 
@@ -94,14 +94,15 @@ ol {
 .seat {
 	display: flex;
 	flex: 0 0 9%;
-	padding:3px;
+	padding: 3px;
+  margin-left: -5px;
 	position: relative;
 
 	&:nth-child(3) {
-		margin-right: 9%;
+		margin-right: 7%;
 	}
     &:nth-child(6) {
-		margin-right: 9%;
+		margin-right: 7%;
 	}
 
 	input[type='checkbox'] {
