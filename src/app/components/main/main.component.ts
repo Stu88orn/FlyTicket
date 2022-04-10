@@ -37,6 +37,8 @@ export class MainComponent implements OnInit {
   flightsResponse: FlightResponse | undefined;
   cityResponse: CityResponse | undefined;
 
+
+
   findFlyForm = new FormGroup({
     departure: new FormControl('', Validators.required),
     arrival: new FormControl('', Validators.required),
