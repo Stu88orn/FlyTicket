@@ -6,6 +6,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {DayOfWeekService} from "../../servicies/Converters/day-of-week.service";
 import {LanguageService} from "../../servicies/Language/language.service";
 
+
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -28,6 +29,7 @@ export class MainComponent implements OnInit {
   longHourDep: number | undefined;
   minDate: Date | undefined;
   flights: any = [];
+
   h__min: any[] | undefined;
   reservationTicket: any = [];
   passengersIndex: any = [];

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-airbus-a320',
   templateUrl: './airbus-a320.component.html',
@@ -11,12 +13,13 @@ export class AirbusA320Component implements OnInit {
   reservationButton: string = 'Reservation';
 
 
+
   dataSource:any = [];
 
   constructor() { }
 
   ngOnInit(): void {
-    
+
   }
 
   onAddSeat(){

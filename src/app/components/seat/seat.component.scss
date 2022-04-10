@@ -1,0 +1,27 @@
+.seat {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  // font-weight: bold;
+  line-height: 1.5rem;
+  padding: 4px 0;
+  background: #208828;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.seat .selected {
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  // font-weight: bold;
+  line-height: 1.5rem;
+  padding: 4px 0;
+  background: #d40000;
+  border-radius: 5px;
+  cursor: pointer;
+}

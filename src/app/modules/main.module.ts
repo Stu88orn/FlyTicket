@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PassengersComponent } from "../components/passengers/passengers.component";
 import { Boeing787Component } from "../components/airplanes/boeing787/boeing787.component";
 import { EmbraerComponent } from "../components/airplanes/embraer/embraer.component";
+import { SeatComponent } from '../components/seat/seat.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EmbraerComponent } from "../components/airplanes/embraer/embraer.compon
     AirbusA320Component,
     Boeing787Component,
     EmbraerComponent,
-    PassengersComponent
+    PassengersComponent,
+    SeatComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { EmbraerComponent } from "../components/airplanes/embraer/embraer.compon
     PassengersComponent,
     Boeing787Component,
     EmbraerComponent,
-    PassengersComponent
+    PassengersComponent,
+    SeatComponent
   ]
 })
 export class MainModule { }
