@@ -46,8 +46,9 @@ this.seats = [];
 onAddSeat(){
  this.dataSource.push(this.dataSource.length)
   console.log(this.dataSource);
- 
-}
 
 }
 
+}
+
+//click
