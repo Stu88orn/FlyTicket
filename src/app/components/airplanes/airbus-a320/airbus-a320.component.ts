@@ -31,7 +31,7 @@ this.seats = [];
       for (let j = 0; j < this.columnNumber; j++) {
         this.seats[i][j] = false;
       }
-      this.seats.push(this.seats[i]);
+      this.seats.push(this.seats[i + 1 ]);
 
     }
   }
@@ -46,6 +46,7 @@ this.seats = [];
 onAddSeat(){
  this.dataSource.push(this.dataSource.length)
   console.log(this.dataSource);
+ 
 }
 
 }
