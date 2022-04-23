@@ -1,0 +1,21 @@
+<div class="row">
+  <ng-container [ngSwitch]="planeType">
+    <div *ngSwitchCase="1">
+      <app-embraer></app-embraer>
+    </div>
+    <div *ngSwitchCase="2">
+      <app-airbus-a320></app-airbus-a320>
+    </div>
+    <div *ngSwitchCase="3">
+      <app-boeing787></app-boeing787>
+    </div>
+    <div *ngSwitchDefault>
+    </div>
+  </ng-container>
+</div>
+
+<div class="d-flex justify-content-center gap-4">
+  <button (click)="backToMain()" class="btn btn-warning">Back</button>
+  <button (click)="goToPassengers()" [hidden]="!showNextBtn" class="btn btn-primary">Next</button>
+</div>
+
