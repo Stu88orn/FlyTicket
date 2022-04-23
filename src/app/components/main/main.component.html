@@ -1,156 +1,52 @@
-<p class="main__info">{{title__main}}</p>
-<mat-stepper orientation="vertical" [linear]="true" #stepper>
-  <div class="container">
-    <mat-step [stepControl]="findFlyForm">
-      <form [formGroup]="findFlyForm">
-        <ng-template matStepLabel>Szukaj Połączenia</ng-template>
-        <ng-template matStepContent>
-          <div class="container">
-            <div class="row g-3  findInput">
-              <div class="col main__page">
-                <label class="form-label">Select Departure Airport:</label>
-                <select class="form-control form-select-sm" aria-label="Departure"
-                        formControlName="departure" required>
-                  <option value="KTW">Katowice</option>
-                  <option value="WAW">Warszawa</option>
-                  <option value="FRA">Frankfurt</option>
-                  <option value="NYC">New York</option>
-                </select>
-              </div>
-              <div class="col">
-                <label class="form-label">Select Arrival Airport:</label>
-                <select class="form-control form-select-sm" aria-label="Arrival"
-                        formControlName="arrival" required>
-                  <option value="KTW">Katowice</option>
-                  <option value="WAW">Warszawa</option>
-                  <option value="FRA">Frankfurt</option>
-                  <option value="NYC">New York</option>
-                </select>
-              </div>
-              <div class="col">
-                <label class="form-label">Select Date:</label>
-                <input matInput type="date" class="form-control" aria-label="Date"
-                       formControlName="departureDate" [min]="minDate" required>
-              </div>
-              <div class="col">
-                <label class="form-label">Select Dep Time:</label>
-                <select class="from-control form-select-sm" aria-label="DepartureTime" formControlName="departureTime"
-                        required>
-                  <option value="00:00">00:00</option>
-                  <option value="01:00">01:00</option>
-                  <option value="02:00">02:00</option>
-                  <option value="03:00">03:00</option>
-                  <option value="04:00">04:00</option>
-                  <option value="05:00">05:00</option>
-                  <option value="06:00">06:00</option>
-                  <option value="07:00">07:00</option>
-                  <option value="08:00">08:00</option>
-                  <option value="09:00">09:00</option>
-                  <option value="10:00">10:00</option>
-                  <option value="11:00">11:00</option>
-                  <option value="12:00">12:00</option>
-                  <option value="13:00">13:00</option>
-                  <option value="14:00">14:00</option>
-                  <option value="15:00">15:00</option>
-                  <option value="16:00">16:00</option>
-                  <option value="17:00">17:00</option>
-                  <option value="18:00">18:00</option>
-                  <option value="19:00">19:00</option>
-                  <option value="20:00">20:00</option>
-                  <option value="21:00">21:00</option>
-                  <option value="22:00">22:00</option>
-                  <option value="23:00">23:00</option>
-                </select>
-              </div>
-              <div class="col">
-                <label class="form-label">Select Time</label>
-                <select class="from-control form-select-sm" aria-label="Departure Time" formControlName="departureHour"
-                        required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <button class="btn btn-primary" (click)="findFly()" matStepperNext
-                      [disabled]="!findFlyForm.valid">{{nextButton}}</button>
-            </div>
+
+<div class="container-fluid f_text">
+  <div class="f_text">System Rezerwacji</div>
+  <div class="f_text">Biletów Lotniczych</div>
+    <div class="row g-3 findInput">
+      <div class="col main__page">
+        <form [formGroup]="findFormGroup" (ngSubmit)="onSubmit()">
+          <select formControlName="depCitys" class="form-control form-select" required>
+            <option selected disabled value="null">Select Departure Airport</option>
+            <option *ngFor="let city of depCitys" [ngValue]="city.value">{{city.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('depCitys').errors?.required">
+            <sup>*</sup>Please choose your departure City Name
           </div>
-        </ng-template>
-      </form>
-    </mat-step>
-  </div>
-  <mat-step>
-    <ng-template matStepLabel>Wybor Lotów</ng-template>
-    <ng-template matStepContent>
-      <div class="container mt-3">
-        <div class="row">
-          <header>
-            <h3 class="main__info mt-5 ">{{title__flightList}} {{depCity}} --> {{arrCity}} : Dnia: {{checkDay}}</h3>
-          </header>
-          <!-------------------------------------------------------->
-          <table class="table">
-            <thead>
-            <tr>
-              <th scope="col">Flight Number</th>
-              <th scope="col">Carrier</th>
-              <th scope="col">AirPlane</th>
-              <th scope="col">Date And Hour Departure</th>
-              <th scope="col">Choose</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let flight of flights; let i = index">
-              <td>{{flight.cs_flight_iata}}</td>
-              <td>{{flight.cs_airline_iata}}</td>
-              <td>{{flight.aircraft_icao}}</td>
-              <td>{{flight.dep_time}}</td>
-              <td>
-                <button class="btn btn-primary" (click)="goToReservation(i)" matStepperNext>Reserve</button>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-          <button class="btn btn-primary" matStepperPrevious>Back</button>
-        </div>
-      </div>
-    </ng-template>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Wybor Miejsca</ng-template>
-      <ng-template>
-        <app-airbus-a320></app-airbus-a320>
-      </ng-template>
-      <ng-template>
-        <app-boeing787></app-boeing787>
-      </ng-template>
-      <ng-template>
-        <app-embraer></app-embraer>
-      </ng-template>
 
-      <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
-      <button class="btn btn-primary" mat-button matStepperNext>Next</button>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Passangers</ng-template>
-    <div class="container mt-3">
-      <div class="row">
-        <h3>{{title__passengersDetails}}</h3>
-        <div *ngFor="let passenger of passengersIndex; let i = index">
-          <app-passengers></app-passengers>
-        </div>
+          <select formControlName="arrCitys" class="form-control form-select" required>
+            <option selected disabled value="null">Select Arrival Airport</option>
+            <option *ngFor="let city of arrCitys" [ngValue]="city.value">{{city.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('arrCitys').errors?.required">
+            <sup>*</sup>Please choose your Arrival City Name
+          </div>
 
-        <button class="btn btn-primary mt-3">{{reservationButton}}</button>
-        <button class="btn btn-primary mt-3" matStepperPrevious>Back</button>
+          <mat-form-field class="form-select form-control">
+            <mat-label>Departure Date</mat-label>
+            <input required matInput [matDatepicker]="picker" formControlName="calendar"/>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <select formControlName="depTimes" class="form-control form-select" required>
+            <option selected disabled value="null">Select Departure Time</option>
+            <option *ngFor="let depTime of depTimes" [ngValue]="depTime.value">{{depTime.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('depTimes').errors?.required">
+            <sup>*</sup>Please choose your Departure Time
+          </div>
+
+          <select formControlName="selTimes" class="form-control form-select" required>
+            <option selected disabled value="null">Select Time</option>
+            <option *ngFor="let selTime of selTimes" [ngValue]="selTime.value">{{selTime.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('selTimes').errors?.required">
+            <sup>*</sup>Please choose your time
+          </div>
+          <div class="d-flex justify-content-end ">
+            <button type="submit" class="btn btn-warning w-50">{{nextButton}}</button>
+          </div>
+        </form>
       </div>
     </div>
-  </mat-step>
-</mat-stepper>
+</div>

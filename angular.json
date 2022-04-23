@@ -35,7 +35,8 @@
               "src/styles.scss"
             ],
             "scripts": [
-              "src/assets/scripts/table.js"
+              "src/assets/scripts/table.js",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ]
           },
           "configurations": {

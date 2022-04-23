@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SeatsService} from "../../../services/seats.service";
 
 @Component({
   selector: 'app-airbus-a320',
@@ -10,43 +11,43 @@ export class AirbusA320Component implements OnInit {
   nextButton: string = 'Next';
   reservationButton: string = 'Reservation';
 
+  seatLetters = ['A', 'B', 'C', 'D', 'E', 'F'];
+  seats: boolean[][] = [];
+  private readonly rowsNumber: number = 10;
+  private readonly columnNumber: number = 6;
+
+
 
   dataSource:any = [];
 
-  constructor() { }
+  constructor(private seat:SeatsService) { }
 
   ngOnInit(): void {
-    
+this.seats = [];
+
+    for (let i = 0; i < this.rowsNumber; i++) {
+      this.seats[i] = [];
+      for (let j = 0; j < this.columnNumber; j++) {
+        this.seats[i][j] = false;
+      }
+      this.seats.push(this.seats[i + 1 ]);
+
+    }
   }
 
-  onAddSeat(){
-    this.dataSource.push(this.dataSource.length);
+  toggleSelection(row: number, column: number) {
+    this.seats[row][column] = !this.seats[row][column];
+    console.log(this.seats[row][column]);
   }
 
-  // const oneSeat = document.querySelectorAll('.oneSeat');
-  // const seat = document.querySelectorAll('.seat');
-  // const active = document.querySelectorAll('.active');
-  // const label = document.querySelectorAll('label');
-  // const input = document.querySelectorAll('input');
 
 
-  // oneSeat.forEach( seat => seat.addEventListener('click', freeSeat));
+onAddSeat(){
+    const count = this.seats.flat().filter(Boolean).length;
+    this.seat.setSeats(count);
+    console.log(this.seat.getSeats());
 
-
-  // for (let i = 0; i < oneSeat.length; i++) {
-  //     oneSeat[i].addEventListener('click', function(e){
-  //         if(e.target.classList.contains('active')){
-  //             e.target.classList.remove('active');
-  //             input[i].checked = false;
-  //             label[i].classList.remove('active');
-  //         } else {
-  //             e.target.classList.add('active');
-  //             input[i].checked = true;
-  //             label[i].classList.add('active');
-  //         }
-  //     });
-
-
+}
 
 
 }

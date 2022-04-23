@@ -7,6 +7,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PassengersComponent } from "../components/passengers/passengers.component";
 import { Boeing787Component } from "../components/airplanes/boeing787/boeing787.component";
 import { EmbraerComponent } from "../components/airplanes/embraer/embraer.component";
+import { HomeComponent } from '../components/home/home.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,13 +17,15 @@ import { EmbraerComponent } from "../components/airplanes/embraer/embraer.compon
     AirbusA320Component,
     Boeing787Component,
     EmbraerComponent,
-    PassengersComponent
+    PassengersComponent,
+    HomeComponent,
   ],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
-
+    RouterModule,
+    AppRoutingModule
   ],
   exports:[
     MainComponent,
@@ -28,7 +33,8 @@ import { EmbraerComponent } from "../components/airplanes/embraer/embraer.compon
     PassengersComponent,
     Boeing787Component,
     EmbraerComponent,
-    PassengersComponent
+    PassengersComponent,
+    HomeComponent,
   ]
 })
 export class MainModule { }
