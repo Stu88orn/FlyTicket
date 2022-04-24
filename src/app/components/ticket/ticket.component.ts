@@ -4,6 +4,7 @@ import {FlightService} from "../../services/api/flight.service";
 import {DayOfWeekService} from "../../services/Converters/day-of-week.service";
 import {TicketService} from "../../services/ticket.service";
 import {Flight} from "../../models/flight";
+import { Ticket } from 'src/app/models/ticket';
 
 @Component({
   selector: 'app-ticket',
@@ -11,6 +12,7 @@ import {Flight} from "../../models/flight";
   styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit{
+  _reservation = { name: "Marcin" } as unknown as Ticket;
   seatTable:any[] = []
   _actualDate : any;
   flightDetails: Flight;
@@ -37,6 +39,7 @@ export class TicketComponent implements OnInit{
     this.seatTable[this.seat.getSeats() - 1] = [];
 
     this._actualDate = this.actualDate._actualDate;
+    console.log(this._reservation);
   }
 
 }

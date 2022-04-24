@@ -39,9 +39,8 @@ export class EmbraerComponent implements OnInit {
   }
 
   onAddSeat(){
-    const count = this.seats.filter(Boolean).length;
-    console.log(count);
-    this.seat.setSeats(this.seats);
+    const count = this.seats.flat().filter(Boolean).length;
+    this.seat.setSeats(count);
     console.log(this.seat.getSeats());
   }
 

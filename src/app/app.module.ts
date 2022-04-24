@@ -9,6 +9,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { ChooseFlyComponent } from './components/choose-fly/choose-fly.component';
 import {FormsModule} from "@angular/forms";
 
+
 @NgModule({
   declarations: [
     AppComponent,

@@ -21,11 +21,28 @@ export class SeatsComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
-    this.planeType = 2;
-    if (this.flightDetails.cs_airline_iata && this.flightDetails.cs_flight_iata) {
-      //this.planeType = 1;
+    console.log(this.flightDetails.dep_iata  + this.flightDetails.arr_iata);
+    if(this.flightDetails.dep_iata === "WAW" && this.flightDetails.arr_iata === "KTW"){
+      this.planeType = 1;
+    }else if(this.flightDetails.dep_iata === "KTW" && this.flightDetails.arr_iata === "WAW"){
+      this.planeType = 1;
+    }else if(this.flightDetails.dep_iata === "KTW" && this.flightDetails.arr_iata === "FRA"){
+      this.planeType = 2;
+    }else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "KTW"){
+      this.planeType = 2;
+    } else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "JFK"){
+      this.planeType = 3;
+    } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "FRA"){
+      this.planeType = 3;
+    } else if(this.flightDetails.dep_iata === "WAW" && this.flightDetails.arr_iata === "JFK"){
+      this.planeType = 3;
+    } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "WAW"){
+      this.planeType = 3;
+    }else{
+      console.log("Brak takiego lotu");
     }
-    //this.seat = this.seats.getSeats();
+
+    this.seat = this.seats.getSeats();
   }
 
   goToPassengers() {
@@ -33,7 +50,6 @@ export class SeatsComponent implements OnInit, DoCheck {
       this.navigation.setPage(4);
       this.navigation.goToPage('passengers');
     }
-
   }
 
   backToMain() {
@@ -44,7 +60,6 @@ export class SeatsComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     this.seat = this.seats.getSeats();
     this.showNextBtn = this.seat > 0;
-
   }
 
 

@@ -40,8 +40,6 @@ this.seats = [];
     console.log(this.seats[row][column]);
   }
 
-
-
 onAddSeat(){
     const count = this.seats.flat().filter(Boolean).length;
     this.seat.setSeats(count);

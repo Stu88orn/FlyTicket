@@ -103,7 +103,7 @@ export class MainComponent implements OnInit {
   longHourDep: number | undefined;
   minDate: Date | undefined;
   h__min: any[] | undefined;
-  flightsResponse?: FlightResponse;
+  flightsResponse!: FlightResponse;
   cityResponse: CityResponse | undefined;
 
   constructor(private fb: FormBuilder,
@@ -170,15 +170,12 @@ export class MainComponent implements OnInit {
   getDay(day: string, depTimeMin: string, depTimeMax: string) {
     let a:any;
       if (day != null) {
-        // @ts-ignore
         a = this.flightsResponse.response.filter((s) =>
           s.cs_airline_iata != null
           && s.days && s.days.includes(day)
           && s.dep_time >= depTimeMin
           && s.dep_time <= depTimeMax);
-        console.log(a)
       }
-    console.log(a)
     if (a.length > 0){
       return a;
     }else{
@@ -205,7 +202,6 @@ export class MainComponent implements OnInit {
         // @ts-ignore
         result = this.getDay(day, this.h__min[0], this.h__min[1]);
         if (result.length > 0) {
-          console.log("result: " + result.length);
           this.flightService.setFlightData(result);
           status = true;
         } else {
@@ -220,7 +216,40 @@ export class MainComponent implements OnInit {
     return this.findFormGroup.get(value);
   }
 
+  // asyncAction() {
+  //   var promise = new Promise((resolve, reject) => {
+  //     setTimeout(() => {
+  //       console.log("Async is done!");
+  //       reject('Rejected!');
+  //     }, 1500);
+  //   });
+  //   return promise;
+  // }
+  // asyncAction().then(function(success: any) { 
+  //     console.log(success); 
+  // }) 
+  // .catch(function(error) { 
+  //    // error handler is called
+  //    console.log(error); 
+  // });
+
   onSubmit() {
+    // this.isSubmitted = true;
+    // let promise = new Promise((resolve, reject) =>{
+    //   setTimeout(() =>{
+    //     const status = this.getFlights()
+    //     console.log("reject")
+    //     reject();
+    //   },2000)
+    // }).then(() =>{
+    //   this.navigation.setPage(2);
+    //   this.navigation.goToPage('choose');
+    //   console.log("then")
+    // }).catch(function(error){
+    //   console.log("catch")
+    // })
+
+
     this.isSubmitted = true;
     if (!this.findFormGroup.valid) {
       return false;

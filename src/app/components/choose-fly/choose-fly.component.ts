@@ -24,7 +24,7 @@ export class ChooseFlyComponent implements OnInit {
               private actualDate: DayOfWeekService) {
     this.title__flightList = language.title__flightList;
     this.flights = flight.getFlightData();
-    this.filteredFlight = Array.from(this.flights.reduce((m, t) => m.set(t.dep_time, t), new Map()).values());
+    this.filteredFlight = Array.from(this.flights.reduce((m, t) => m.set(t.dep_time, t), new Map()).values()).sort();
     this.depCity = this.flights[0].dep_iata;
     this.arrCity = this.flights[0].arr_iata;
     this.checkDay = actualDate._actualDate;
