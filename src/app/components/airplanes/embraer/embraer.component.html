@@ -1,0 +1,30 @@
+<h1 class="main__info mt-5 ">Proszę wybrać miejsce</h1>
+    <div class="plane">
+        <div class="cockpit">
+            <h3>Embraer 170</h3>
+        </div>
+        <div class="exit exit--front fuselage">
+        </div>
+        <ol class="cabin fuselage">
+          <li *ngFor="let row of seats; let i = index" class="row row--{{ i + 1 }}">
+            <ol class="seats" type="A">
+              <li class="seat" *ngFor="let seat of row; let j = index">
+                <input
+                  type="checkbox"
+                  class="oneSeat"
+                  [id]="i + 1 + seatLetters[j]"
+                />
+                <label
+                  (click)="toggleSelection(i, j)"
+                  [ngClass]="{ active: seat }"
+                  [for]="i + 1 + seatLetters[j]"
+                  >{{ i + 1 + seatLetters[j] }}</label>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+      <div class="exit exit--back fuselage"></div>
+      <div class="justify-content-center d-flex">
+        <button class="btn btn-light mt-5 mb-5" (click)="onAddSeat()">Confirm</button>
+      </div>
+    </div>

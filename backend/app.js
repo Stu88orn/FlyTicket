@@ -40,7 +40,8 @@ app.use('/api', userRoute)
 app.use('/api/weather', weatherRoute);
 app.use('/api/airpots', airportRoute );
 app.use('/api/flight', flightRoute);
-app.use('/api/reservation', ticketRoute);
+app.use('/api/Seats', ticketRoute);
+
 
 // Create port
 const port = process.env.PORT || 4000

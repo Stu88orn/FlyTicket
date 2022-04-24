@@ -1,0 +1,50 @@
+$base-color: #c6538c;
+$margin__top__elements: 10px;
+$border__choose__seat: 1px solid black;
+$border__radius: 15px;
+$colorFont : white;
+$fontSize: 2rem;
+
+.container-fluid{
+    display: block;
+    width: 100%;
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.main__info{
+    color: $colorFont;
+    font-size: $fontSize;
+}
+
+th, td {
+    padding:2px
+}
+
+.gfg {
+    border-collapse:separate;
+    border-spacing:0 10px;
+}
+
+.fsColor{
+    color: $colorFont;
+}
+
+.btnPrev{
+  height: 30px;
+  width: 100px;
+  font-size: 1.5rem;
+}
+
+.btnRev{
+    height: 30px;
+    width: 100px;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    border-radius: $border__radius;
+    align-items: center;
+}
+
+.tr_class{
+    margin-top: 20px;
+}

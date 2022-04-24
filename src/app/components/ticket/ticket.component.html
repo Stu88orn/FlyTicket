@@ -1,0 +1,56 @@
+<ng-template ngFor [ngForOf]="seatTable" let-i="index">
+  <div class="main_frame">
+    <div class="mat-h2">Ticket No: {{i + 1}}</div>
+    <div class="row row-cols-4">
+      <div class="col w-25">
+        <div>Passenger:</div>
+        <div>{{Name[i] + ' ' + Surname[i]}}</div>
+      </div>
+      <div class="col">
+        <div>Carrier:</div>
+        <div>{{flightDetails.cs_airline_iata}}</div>
+      </div>
+      <div class="col">
+        <div>Flight No:</div>
+        <div>{{flightDetails.cs_flight_number}}</div>
+      </div>
+      <div class="col">
+        <div>Class:</div>
+        <div>A</div>
+      </div>
+      <div class="col w-25">
+        <div>From:</div>
+        <div>{{flightDetails.dep_iata}}</div>
+      </div>
+      <div class="col">
+        <div>Date:</div>
+        <div>{{_actualDate}}</div>
+      </div>
+      <div class="col">
+        <div>Luggage:</div>
+        <div>Y</div>
+      </div>
+      <div class="col">
+        <div>Seat:</div>
+        <div>5A</div>
+      </div>
+      <div class="col w-25">
+        <div>To:</div>
+        <div>{{flightDetails.arr_iata}}</div>
+      </div>
+      <div class="col">
+        <div>Gate:</div>
+        <div>{{flightDetails.dep_terminals}}</div>
+      </div>
+      <div class="col">
+        <div>Duration: </div>
+        <div>{{flightDetails.duration}}[ min]</div>
+      </div>
+      <div class="col">
+        <div>Departure Time: </div>
+        <div>{{flightDetails.dep_time}}</div>
+      </div>
+    </div>
+  </div>
+
+</ng-template>

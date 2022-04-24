@@ -1,0 +1,63 @@
+<div class="panel">
+  <div class="row m-0">
+    <div class="panel-left col-3 text-white text-center">
+      <section class="date-box">
+        <p class="mb-1 day">{{ actualDate |date: 'EEEE' }}</p>
+        <p class="mb-1 time">{{rxTime | date: 'HH:mm'}}</p>
+        <p class="mb-1 date text-muted">{{actualDate | date: 'dd/MM/yyyy'}}</p>
+      </section>
+      <div class="container mt-1">
+        <nav class="menu" id="#menu">
+          <button class="btn button" [disabled]="showButton1"
+                  [ngClass]="showButton1 === false ? 'button__active' : 'button'">
+            <div class="menu-item">
+              <i class="bi bi-search"></i>
+              <p class="mt-2">Find Fly</p>
+            </div>
+          </button>
+
+          <button class="btn button" [disabled]="showButton2"
+                  [ngClass]="showButton2 === false ? 'button__active' : 'button'">
+            <div class="menu-item">
+              <i class="bi bi-check2-circle"></i>
+              <p class="mt-2">Select Fly</p>
+            </div>
+          </button>
+          <button class="btn button" [disabled]="showButton3"
+                  [ngClass]="showButton3 === false ? 'button__active' : 'button'">
+            <div class="menu-item">
+              <i class="bi bi-person-circle"></i>
+              <p class="mt-4">Seats</p>
+            </div>
+          </button>
+          <button class="btn button" [disabled]="showButton4"
+                  [ngClass]="showButton4 === false ? 'button__active' : 'button'">
+            <div class="menu-item">
+              <i class="bi bi-ticket-detailed"></i>
+              <p class="mt-2">Passengers</p>
+            </div>
+          </button>
+          <button class="btn button" [disabled]="showButton5"
+                  [ngClass]="showButton5 === false ? 'button__active' : 'button'">
+            <div class="menu-item">
+              <i class="bi bi-journal-text"></i>
+              <p class="mt-2">Reservation</p>
+            </div>
+          </button>
+        </nav>
+        <section class="info-box">
+          <h3 class="text-muted m-0">Marcin Ptaszny Mateusz Cieslik</h3>
+          <p class="text-muted"> &copy; Copyright 2022</p>
+        </section>
+      </div>
+    </div>
+
+
+    <div class="panel-right col-9 p-0">
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+

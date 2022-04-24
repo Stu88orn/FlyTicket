@@ -1,21 +1,47 @@
-$base-color: #c6538c;
-$margin__top__elements: 50px;
-$border__choose__seat: 2px solid black;
+$margin__top__elements: 20px;
+$border__choose__seat: 1px solid black;
+$border__radius: 15px;
 
-.main__page{
-  height: 60px;
+
+.main__info{
+  display: block;
+  font-size: 10rem;
+  color: white;
+  margin-bottom: 50px;
 }
 
-.container input{
-  margin-top: $margin__top__elements;
+.form-select{
+  height: 50px !important;
+  font-size: 5px;
+  background-color: transparent;
+  color: white;
+  border-radius: $border__radius;
+  margin-top: 10px;
 }
 
-.inputField:hover{
-  box-shadow: $base-color;
+.form-control{
+  height: 30px !important;
+  font-size: 10px;
 }
 
-.container p{
-  font-size: 4rem;
+.btn{
+  height: 30px;
+  font-size: 1.5rem;
+  margin-top: 30px;
+  border-radius: $border__radius;
 }
 
+.mat-datepicker-toggle{
+  color: white;
+}
 
+.f_text{
+  color: white;
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+mat-label{
+  color: white;
+}

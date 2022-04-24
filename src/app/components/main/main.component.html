@@ -1,95 +1,51 @@
-<p class="main__info">{{title__main}}</p>
-<mat-stepper orientation="vertical" [linear]="true" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Szukaj Połączenia</ng-template>
-      <ng-template matStepContent>
-        <div class="container">
-          <div class="row g-3">
-            <div class="col main__page">
-              <input matInput type="text" class="form-control" placeholder="Departure" aria-label="Departure"
-                formControlName="firstCtrl" required>
-            </div>
-            <div class="col">
-              <input matInput type="text" class="form-control" placeholder="Arrival" aria-label="Arrival"
-                formControlName="firstCtrl" required>
-            </div>
-            <div class="col">
-              <input matInput type="date" class="form-control" placeholder="Date" aria-label="Date"
-                formControlName="firstCtrl" required>
-            </div>
-            <button class="btn btn-primary" mat-button matStepperNext>{{nextButton}}</button>
+<div class="container-fluid f_text">
+  <div class="f_text">System Rezerwacji</div>
+  <div class="f_text">Biletów Lotniczych</div>
+    <div class="row g-3 findInput">
+      <div class="col main__page">
+        <form [formGroup]="findFormGroup" (ngSubmit)="onSubmit()">
+          <select formControlName="depCitys" class="form-control form-select" required>
+            <option selected disabled value="null">Select Departure Airport</option>
+            <option *ngFor="let city of depCitys" [ngValue]="city.value">{{city.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('depCitys').errors?.required">
+            <sup>*</sup>Please choose your departure City Name
           </div>
-        </div>
-      </ng-template>
-    </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Wybor Lotów</ng-template>
-      <ng-template matStepContent>
-        <div class="container mt-3">
-          <div class="row">
-            <header>
-              <h3 class="main__info mt-5 ">{{title__flightList}} KTH --> MUN Date: 01-05-2022</h3>
-            </header>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th scope="col">Lp</th>
-                  <th scope="col">Flight Number</th>
-                  <th scope="col">Carrier</th>
-                  <th scope="col">AirPlane</th>
-                  <th scope="col">Date And Hour Departure</th>
-                  <th scope="col">Choose</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>956</td>
-                  <td>WizzAir</td>
-                  <td>Boeing 737-800</td>
-                  <td>01-05-2022 : 12:00</td>
-                  <td><button class="btn btn-primary" matStepperNext>Reserve</button></td>
-                </tr>
-              </tbody>
-            </table>
-            <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
+
+          <select formControlName="arrCitys" class="form-control form-select" required>
+            <option selected disabled value="null">Select Arrival Airport</option>
+            <option *ngFor="let city of arrCitys" [ngValue]="city.value">{{city.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('arrCitys').errors?.required">
+            <sup>*</sup>Please choose your Arrival City Name
           </div>
-        </div>
-      </ng-template>
-    </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Wybor Miejsca</ng-template>
-    <app-airbus-a320></app-airbus-a320>
-    <button class="btn btn-primary" mat-button matStepperPrevious>Back</button>
-    <button class="btn btn-primary" mat-button matStepperNext>Next</button>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Passangers</ng-template>
-    <div class="container mt-3">
-      <div class="row">
-        <h3>{{title__passengersDetails}}</h3>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="First Name" aria-label="First Name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Last Name" aria-label="Last Name">
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" placeholder="Passport" aria-label="Passport">
-        </div>
-        <div class="col">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault"></label>
+
+          <mat-form-field class="form-select form-control">
+            <mat-label>Departure Date</mat-label>
+            <input required matInput [matDatepicker]="picker" formControlName="calendar"/>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <select formControlName="depTimes" class="form-control form-select" required>
+            <option selected disabled value="null">Select Departure Time</option>
+            <option *ngFor="let depTime of depTimes" [ngValue]="depTime.value">{{depTime.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('depTimes').errors?.required">
+            <sup>*</sup>Please choose your Departure Time
           </div>
-        </div>
-        <button class="btn btn-primary mt-3">{{reservationButton}}</button>
-        <button class="btn btn-primary mt-3" mat-button matStepperPrevious>Back</button>
+
+          <select formControlName="selTimes" class="form-control form-select" required>
+            <option selected disabled value="null">Select Time</option>
+            <option *ngFor="let selTime of selTimes" [ngValue]="selTime.value">{{selTime.name}}</option>
+          </select>
+          <div class="invalid-feedback" *ngIf="isSubmitted && getNameValidator('selTimes').errors?.required">
+            <sup>*</sup>Please choose your time
+          </div>
+          <div class="d-flex justify-content-end ">
+            <button type="submit" class="btn btn-warning w-50">{{nextButton}}</button>
+          </div>
+        </form>
       </div>
     </div>
-  </mat-step>
-</mat-stepper>
+</div>
