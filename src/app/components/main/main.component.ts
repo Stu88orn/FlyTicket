@@ -216,40 +216,7 @@ export class MainComponent implements OnInit {
     return this.findFormGroup.get(value);
   }
 
-  // asyncAction() {
-  //   var promise = new Promise((resolve, reject) => {
-  //     setTimeout(() => {
-  //       console.log("Async is done!");
-  //       reject('Rejected!');
-  //     }, 1500);
-  //   });
-  //   return promise;
-  // }
-  // asyncAction().then(function(success: any) { 
-  //     console.log(success); 
-  // }) 
-  // .catch(function(error) { 
-  //    // error handler is called
-  //    console.log(error); 
-  // });
-
   onSubmit() {
-    // this.isSubmitted = true;
-    // let promise = new Promise((resolve, reject) =>{
-    //   setTimeout(() =>{
-    //     const status = this.getFlights()
-    //     console.log("reject")
-    //     reject();
-    //   },2000)
-    // }).then(() =>{
-    //   this.navigation.setPage(2);
-    //   this.navigation.goToPage('choose');
-    //   console.log("then")
-    // }).catch(function(error){
-    //   console.log("catch")
-    // })
-
-
     this.isSubmitted = true;
     if (!this.findFormGroup.valid) {
       return false;
@@ -263,4 +230,4 @@ export class MainComponent implements OnInit {
       }
     }
     return 0
-  }
+  }}
