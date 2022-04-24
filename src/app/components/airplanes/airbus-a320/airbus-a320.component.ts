@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SeatsService} from "../../../services/seats.service";
 
+
 @Component({
   selector: 'app-airbus-a320',
   templateUrl: './airbus-a320.component.html',
@@ -46,6 +47,4 @@ onAddSeat(){
     console.log(this.seat.getSeats());
 
 }
-
-
 }

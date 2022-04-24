@@ -19,6 +19,7 @@ import { AppRoutingModule } from '../app-routing.module';
     EmbraerComponent,
     PassengersComponent,
     HomeComponent,
+
   ],
   imports: [
     CommonModule,

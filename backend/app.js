@@ -42,6 +42,7 @@ app.use('/api/airpots', airportRoute );
 app.use('/api/flight', flightRoute);
 app.use('/api/Seats', ticketRoute);
 
+
 // Create port
 const port = process.env.PORT || 4000
 const server = app.listen(port, () => {

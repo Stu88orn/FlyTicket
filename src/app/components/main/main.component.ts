@@ -264,4 +264,3 @@ export class MainComponent implements OnInit {
     }
     return 0
   }
-}
