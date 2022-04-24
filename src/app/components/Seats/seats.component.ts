@@ -30,6 +30,10 @@ export class SeatsComponent implements OnInit, DoCheck {
       this.planeType = 2;
     }else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "KTW"){
       this.planeType = 2;
+    }else if(this.flightDetails.dep_iata === "WAW" && this.flightDetails.arr_iata === "FRA"){
+      this.planeType = 2;
+    }else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "WAW"){
+      this.planeType = 2;
     } else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "JFK"){
       this.planeType = 3;
     } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "FRA"){
