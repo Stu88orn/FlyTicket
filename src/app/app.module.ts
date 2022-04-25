@@ -8,6 +8,7 @@ import { SeatsComponent } from './components/Seats/seats.component';
 import { TicketComponent } from './components/ticket/ticket.component';
 import { ChooseFlyComponent } from './components/choose-fly/choose-fly.component';
 import {FormsModule} from "@angular/forms";
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {FormsModule} from "@angular/forms";
     SeatsComponent,
     TicketComponent,
     ChooseFlyComponent,
+    InfoComponent,
 
   ],
     imports: [
