@@ -1,11 +1,44 @@
 import {Injectable} from '@angular/core';
+import {FlightResponse} from "../../models/flightResponse";
+import {FlightService} from "../api/flight.service";
+import {NavigationService} from "../navigation.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DayOfWeekService {
-  _actualDate : any;
-  constructor() {
+  depCity: string = '';
+  arrCity: string = '';
+  hourDep: string = '';
+  longHourDep: number = 0;
+  minDate: Date | undefined;
+  h__min: string[] = [];
+  _actualDate : string = '';
+  flightsResponse!: FlightResponse;
+  day : any;
+  result : any;
+  actualDay: string = '';
+
+  constructor(private  flightService:FlightService,
+              private navigation: NavigationService) {
+  }
+
+  setFlightResponse(value:FlightResponse){
+    this.flightsResponse = value;
+  }
+
+  getDay(day: string, depTimeMin: string, depTimeMax: string) {
+    let a:any;
+      a = this.flightsResponse.response.filter((s) =>
+        s.cs_airline_iata != null
+        && s.days && s.days.includes(day)
+        && s.dep_time >= depTimeMin
+        && s.dep_time <= depTimeMax);
+    if (a.length > 0){
+      return a;
+    }else{
+      return false
+    }
   }
 
   getDate(){
@@ -55,6 +88,67 @@ export class DayOfWeekService {
       }
     }
     return result
+  }
+
+  getDepCity(){
+    return this.depCity;
+  }
+
+  setDepCity(value: string){
+    this.depCity = value;
+  }
+
+  getArrCity(){
+    return this.arrCity;
+  }
+
+  setArrCity(value:string){
+    this.arrCity = value;
+  }
+
+  getHourDep(){
+    return this.hourDep;
+  }
+
+  setHourDep(value:string){
+    this.hourDep = value;
+  }
+
+  getLongHourDep(){
+    return this.longHourDep;
+  }
+
+  setLongHourDep(value:number){
+    this.longHourDep = value;
+  }
+
+  getHMin(){
+    return this.h__min = this.getHour(this.hourDep, this.longHourDep);
+  }
+
+  getFlight() {
+    this.getHMin();
+    const prom = new Promise((resolve, reject) => {
+      this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
+        this.setFlightResponse(flightResponse);
+      })
+      setTimeout(() => {
+        resolve("prom");
+      },1000)
+    })
+    prom.then(() => {
+      this.result = this.getDay(this.day, this.h__min[0], this.h__min[1]);
+      console.log(this.result);
+    }).then(()=>{
+      if(this.result != false){
+        this.flightService.setFlightData(this.result);
+        this.navigation.setPage(2);
+        this.navigation.goToPage('choose');
+      }
+    }).catch(() => {
+      console.log("no flight on main")
+    })
+
   }
 
 }

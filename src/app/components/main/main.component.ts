@@ -99,11 +99,11 @@ export class MainComponent implements OnInit {
   hourDep: string = '';
   longHourDep: number = 0;
   minDate: Date | undefined;
-  h__min: any[] = [];
+  h__min: string[] = [];
   flightsResponse!: FlightResponse;
   cityResponse: CityResponse | undefined;
   day : any;
-  result : any;
+  result : string = '';
 
   constructor(private fb: FormBuilder,
     private flightService: FlightService,
@@ -132,10 +132,12 @@ export class MainComponent implements OnInit {
     this.setDefaults();
     this.findFormGroup.get('depCitys').valueChanges.subscribe((f: any) => {
       this.depCity = f.toString();
+      this.dayOfWeek.setDepCity(f.toString());
     })
 
     this.findFormGroup.get('arrCitys').valueChanges.subscribe((f: any) => {
       this.arrCity = f.toString();
+      this.dayOfWeek.setArrCity(f.toString());
     })
 
     this.findFormGroup.get('calendar').valueChanges.subscribe((f: any) => {
@@ -146,15 +148,14 @@ export class MainComponent implements OnInit {
 
     this.findFormGroup.get('depTimes').valueChanges.subscribe((f: any) => {
       this.hourDep = f.toString();
+      this.dayOfWeek.setHourDep(f.toString());
+
     })
 
     this.findFormGroup.get('selTimes').valueChanges.subscribe((f: any) => {
       this.longHourDep = f.toString();
-      if (this.hourDep){
-        if(this.longHourDep){
-          this.h__min = this.dayOfWeek.getHour(this.hourDep,this.longHourDep);
-      }
-    }
+      this.dayOfWeek.setLongHourDep(f.toString());
+      this.h__min = this.dayOfWeek.getHMin();
     })
   }
 
@@ -164,22 +165,6 @@ export class MainComponent implements OnInit {
     this.findFormGroup.get('calendar').patchValue(null);
     this.findFormGroup.get('depTimes').patchValue(null);
     this.findFormGroup.get('selTimes').patchValue(null);
-  }
-
-  getDay(day: string, depTimeMin: string, depTimeMax: string) {
-    let a:any;
-      if (day != null) {
-        a = this.flightsResponse.response.filter((s) =>
-          s.cs_airline_iata != null
-          && s.days && s.days.includes(day)
-          && s.dep_time >= depTimeMin
-          && s.dep_time <= depTimeMax);
-      }
-    if (a.length > 0){
-      return a;
-    }else{
-      return false
-    }
   }
 
   getCity(city: string) {
@@ -196,29 +181,30 @@ export class MainComponent implements OnInit {
     this.isSubmitted = true;
     const prom = new Promise((resolve, reject) => {
         this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
-          this.flightsResponse = flightResponse;
-          console.log(this.flightsResponse)
+          this.dayOfWeek.setFlightResponse(flightResponse);
         })
         setTimeout(() => {
           resolve("prom");
-        },2000)
+        },1000)
     })
     prom.then(() => {
       this.day = this.dayOfWeek.getDayOfWeek(this.actualDay);
     }).then(() => {
       if(this.day != null){
-        this.result = this.getDay(this.day, this.h__min[0], this.h__min[1]);
+        this.result = this.dayOfWeek.getDay(this.day, this.h__min[0], this.h__min[1]);
       }
     }).then(()=>{
       this.flightService.setFlightData(this.result);
       this.navigation.setPage(2);
       this.navigation.goToPage('choose');
     }).catch(() => {
-        console.log("no flight")
+        console.log("no flight on main")
       })
 
   }
 
   onSubmit() {
+    this.isSubmitted = true;
+    //this.dayOfWeek.getFlight();
     this.getFlight();
   }}
