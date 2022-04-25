@@ -5,6 +5,7 @@ import {DayOfWeekService} from "../../services/Converters/day-of-week.service";
 import {TicketService} from "../../services/ticket.service";
 import {Flight} from "../../models/flight";
 import { Ticket } from 'src/app/models/ticket';
+import {NavigationService} from "../../services/navigation.service";
 
 @Component({
   selector: 'app-ticket',
@@ -21,7 +22,8 @@ export class TicketComponent implements OnInit{
   Luggage:string[] = [];
 
   constructor(private seat: SeatsService, private flight:FlightService,
-              private actualDate: DayOfWeekService, private ticket:TicketService) {
+              private actualDate: DayOfWeekService, private ticket:TicketService,
+              private navigation:NavigationService) {
     this.getData();
     this.flightDetails = this.flight.getFlightDetails(); //here we have all information about choose fly
   }
@@ -40,6 +42,11 @@ export class TicketComponent implements OnInit{
 
     this._actualDate = this.actualDate._actualDate;
     console.log(this._reservation);
+  }
+
+  reserve(){
+    this.navigation.setPage(1);
+    this.navigation.goToPage('main');
   }
 
 }

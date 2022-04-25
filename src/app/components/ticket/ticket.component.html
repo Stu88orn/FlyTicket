@@ -43,14 +43,17 @@
         <div>{{flightDetails.dep_terminals}}</div>
       </div>
       <div class="col">
-        <div>Duration: </div>
+        <div>Duration:</div>
         <div>{{flightDetails.duration}}[ min]</div>
       </div>
       <div class="col">
-        <div>Departure Time: </div>
+        <div>Departure Time:</div>
         <div>{{flightDetails.dep_time}}</div>
       </div>
     </div>
   </div>
 
 </ng-template>
+<div class="d-flex justify-content-end">
+  <button type="submit" class="btn btn-warning" (click)="reserve()">Reserve</button>
+</div>
