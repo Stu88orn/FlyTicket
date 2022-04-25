@@ -25,6 +25,10 @@ export class SeatsComponent implements OnInit, DoCheck {
       this.planeType = 1;
     }else if(this.flightDetails.dep_iata === "KTW" && this.flightDetails.arr_iata === "WAW"){
       this.planeType = 1;
+    }else if(this.flightDetails.dep_iata === "KTW" && this.flightDetails.arr_iata === "LHR"){
+      this.planeType = 2;
+    }else if(this.flightDetails.dep_iata === "LHR" && this.flightDetails.arr_iata === "KTW"){
+      this.planeType = 2;
     }else if(this.flightDetails.dep_iata === "KTW" && this.flightDetails.arr_iata === "FRA"){
       this.planeType = 2;
     }else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "KTW"){
@@ -33,18 +37,17 @@ export class SeatsComponent implements OnInit, DoCheck {
       this.planeType = 2;
     }else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "WAW"){
       this.planeType = 2;
-    } else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "JFK"){
+    } else if(this.flightDetails.dep_iata === "FRA" && this.flightDetails.arr_iata === "LHR"){
       this.planeType = 3;
-    } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "FRA"){
+    } else if(this.flightDetails.dep_iata === "LHR" && this.flightDetails.arr_iata === "FRA"){
       this.planeType = 3;
-    } else if(this.flightDetails.dep_iata === "WAW" && this.flightDetails.arr_iata === "JFK"){
+    } else if(this.flightDetails.dep_iata === "WAW" && this.flightDetails.arr_iata === "LHR"){
       this.planeType = 3;
-    } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "WAW"){
+    } else if(this.flightDetails.dep_iata === "LHR" && this.flightDetails.arr_iata === "WAW"){
       this.planeType = 3;
     }else{
       console.log("No flight");
     }
-
     this.seat = this.seats.getSeats();
   }
 

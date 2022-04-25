@@ -31,8 +31,6 @@ export const MY_FORMATS = {
     {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS}],
 })
 
-
-
 export class MainComponent implements OnInit {
   title__main: string = '';
   title__flightList: string = '';
@@ -47,15 +45,15 @@ export class MainComponent implements OnInit {
   depCitys = [
     {id: 1 , name : "Katowice", value: 'KTW'},
     {id: 2 , name : "Warszawa", value: 'WAW'},
-    {id: 3, name : "Frankfurt", value: 'FRA'},
-    {id: 4 , name : "New York", value: 'JFK'},
+    {id: 3, name :  "Frankfurt", value: 'FRA'},
+    {id: 4 , name : "London", value: 'LHR'},
   ]
 
   arrCitys = [
     {id: 1 , name : "Katowice", value: 'KTW'},
     {id: 2 , name : "Warszawa", value: 'WAW'},
-    {id: 3, name : "Frankfurt", value: 'FRA'},
-    {id: 4 , name : "New York", value: 'JFK'},
+    {id: 3, name :  "Frankfurt", value: 'FRA'},
+    {id: 4 , name : "London", value: 'LHR'},
   ]
 
   depTimes = [
@@ -190,28 +188,6 @@ export class MainComponent implements OnInit {
     })
   }
 
-  // getFlights(){
-  //   let result : any;
-  //   let status = false;
-  //   this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
-  //     this.flightsResponse = flightResponse;
-  //     console.log(this.flightsResponse)
-  //   })
-  //   if (this.actualDay) {
-  //     const day = this.dayOfWeek.getDayOfWeek(this.actualDay);
-  //     if (day) {
-  //       result = this.getDay(day, this.h__min[0], this.h__min[1]);
-  //       if (result.length > 0) {
-  //         this.flightService.setFlightData(result);
-  //         status = true;
-  //       } else {
-  //         status = false;
-  //       }
-  //     }
-  //   }
-  //   return status;
-  // }
-
   getNameValidator(value:string) {
     return this.findFormGroup.get(value);
   }
@@ -237,27 +213,12 @@ export class MainComponent implements OnInit {
       this.flightService.setFlightData(this.result);
       this.navigation.setPage(2);
       this.navigation.goToPage('choose');
-    })
-      .catch((error) => {
+    }).catch(() => {
         console.log("no flight")
       })
 
   }
 
-
   onSubmit() {
     this.getFlight();
-    // this.isSubmitted = true;
-    // if (!this.findFormGroup.valid) {
-    //   return false;
-    // } else {
-    //   const status = this.getFlights();
-    //   if(status){
-    //     this.navigation.setPage(2);
-    //     this.navigation.goToPage('choose');
-    //   }else{
-    //     console.log("no flight")
-    //   }
-    // }
-    // return 0
   }}
