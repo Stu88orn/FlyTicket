@@ -11,7 +11,6 @@ import {NavigationService} from "../../services/navigation.service";
 })
 export class SeatsComponent implements OnInit, DoCheck {
   seat: number = 0;
-  seatTable = [];
   planeType: any;
   flightDetails: Flight;
   showNextBtn: boolean = false;
@@ -43,7 +42,7 @@ export class SeatsComponent implements OnInit, DoCheck {
     } else if(this.flightDetails.dep_iata === "JFK" && this.flightDetails.arr_iata === "WAW"){
       this.planeType = 3;
     }else{
-      console.log("Brak takiego lotu");
+      console.log("No flight");
     }
 
     this.seat = this.seats.getSeats();

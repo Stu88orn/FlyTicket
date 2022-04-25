@@ -18,7 +18,6 @@ export class DayOfWeekService {
 
   getDayOfWeek(checkDate: string) {
     const dayOfWeek = new Date(checkDate).getDay();
-    console.log(dayOfWeek);
     return isNaN(dayOfWeek) ? null :
       ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'][dayOfWeek];
   }

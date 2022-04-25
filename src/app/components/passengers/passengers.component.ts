@@ -1,7 +1,5 @@
-import {Component, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SeatsService} from "../../services/seats.service";
-import {FlightService} from "../../services/api/flight.service";
-import {Flight} from "../../models/flight";
 import {Ticket} from "../../models/ticket";
 import {TicketService} from "../../services/ticket.service";
 import {NavigationService} from "../../services/navigation.service";
@@ -26,10 +24,6 @@ export class PassengersComponent implements OnInit {
     console.log(this.count);
     // @ts-ignore
     this.seatTable[this.count - 1] = []
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-
   }
 
   ngDoCheck(): void {

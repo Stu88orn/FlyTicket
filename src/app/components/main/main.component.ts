@@ -8,6 +8,7 @@ import { LanguageService } from "../../services/Language/language.service";
 import { NavigationService } from 'src/app/services/navigation.service';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MomentDateAdapter} from "@angular/material-moment-adapter";
+import {error} from "@angular/compiler/src/util";
 
 export const MY_FORMATS = {
   parse: {
@@ -91,20 +92,20 @@ export class MainComponent implements OnInit {
     {id: 1 , name: "05:00", value: "5"},
   ]
 
-
-
   isSubmitted = false;
   nameCalendar : string = "Date";
 
-  depCity: string | undefined;
-  arrCity: string | undefined;
-  actualDay: string | undefined;
-  hourDep: string | undefined;
-  longHourDep: number | undefined;
+  depCity: string = '';
+  arrCity: string = '';
+  actualDay: string = '';
+  hourDep: string = '';
+  longHourDep: number = 0;
   minDate: Date | undefined;
-  h__min: any[] | undefined;
+  h__min: any[] = [];
   flightsResponse!: FlightResponse;
   cityResponse: CityResponse | undefined;
+  day : any;
+  result : any;
 
   constructor(private fb: FormBuilder,
     private flightService: FlightService,
@@ -189,45 +190,74 @@ export class MainComponent implements OnInit {
     })
   }
 
-  getFlights(){
-    let result : any;
-    let status = false;
-    this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
-      this.flightsResponse = flightResponse;
-      console.log(this.flightsResponse)
-    })
-    if (this.actualDay) {
-      const day = this.dayOfWeek.getDayOfWeek(this.actualDay);
-      if (day) {
-        // @ts-ignore
-        result = this.getDay(day, this.h__min[0], this.h__min[1]);
-        if (result.length > 0) {
-          this.flightService.setFlightData(result);
-          status = true;
-        } else {
-          status = false;
-        }
-      }
-    }
-    return status;
-  }
+  // getFlights(){
+  //   let result : any;
+  //   let status = false;
+  //   this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
+  //     this.flightsResponse = flightResponse;
+  //     console.log(this.flightsResponse)
+  //   })
+  //   if (this.actualDay) {
+  //     const day = this.dayOfWeek.getDayOfWeek(this.actualDay);
+  //     if (day) {
+  //       result = this.getDay(day, this.h__min[0], this.h__min[1]);
+  //       if (result.length > 0) {
+  //         this.flightService.setFlightData(result);
+  //         status = true;
+  //       } else {
+  //         status = false;
+  //       }
+  //     }
+  //   }
+  //   return status;
+  // }
 
   getNameValidator(value:string) {
     return this.findFormGroup.get(value);
   }
 
-  onSubmit() {
+  getFlight() {
     this.isSubmitted = true;
-    if (!this.findFormGroup.valid) {
-      return false;
-    } else {
-      const status = this.getFlights();
-      if(status){
-        this.navigation.setPage(2);
-        this.navigation.goToPage('choose');
-      }else{
-        console.log("no flight")
+    const prom = new Promise((resolve, reject) => {
+        this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
+          this.flightsResponse = flightResponse;
+          console.log(this.flightsResponse)
+        })
+        setTimeout(() => {
+          resolve("prom");
+        },2000)
+    })
+    prom.then(() => {
+      this.day = this.dayOfWeek.getDayOfWeek(this.actualDay);
+    }).then(() => {
+      if(this.day != null){
+        this.result = this.getDay(this.day, this.h__min[0], this.h__min[1]);
       }
-    }
-    return 0
+    }).then(()=>{
+      this.flightService.setFlightData(this.result);
+      this.navigation.setPage(2);
+      this.navigation.goToPage('choose');
+    })
+      .catch((error) => {
+        console.log("no flight")
+      })
+
+  }
+
+
+  onSubmit() {
+    this.getFlight();
+    // this.isSubmitted = true;
+    // if (!this.findFormGroup.valid) {
+    //   return false;
+    // } else {
+    //   const status = this.getFlights();
+    //   if(status){
+    //     this.navigation.setPage(2);
+    //     this.navigation.goToPage('choose');
+    //   }else{
+    //     console.log("no flight")
+    //   }
+    // }
+    // return 0
   }}
