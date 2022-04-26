@@ -1,3 +1,11 @@
 .font-color{
   color: white;
 }
+
+@media(max-width:576px){
+  .font-color{
+    text-align: center;
+    font-size: 20px;
+
+  }
+}
