@@ -8,7 +8,7 @@ export class TicketService {
   surname: string[] = [];
   dateOfBirth: string[] = [];
   passport: string[] = [];
-  luggage: string[] = [];
+  luggage: boolean[] = [];
 
   constructor() {}
 
@@ -43,7 +43,8 @@ export class TicketService {
   getLuggage(index:number){
     return this.luggage[index];
   }
-  setLuggage(value:string, index:number){
+
+  setLuggage(value:boolean, index:number){
     return this.luggage[index] = value;
   }
 

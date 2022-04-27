@@ -19,7 +19,8 @@ export class TicketComponent implements OnInit{
   flightDetails: Flight;
   Name:string[] = [];
   Surname:string[] = [];
-  Luggage:string[] = [];
+  Luggage:boolean[] = [];
+  LuggageH:string[] = [];
 
   constructor(private seat: SeatsService, private flight:FlightService,
               private actualDate: DayOfWeekService, private ticket:TicketService,
@@ -31,22 +32,29 @@ export class TicketComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  getData(){
-    for(let i = 0; i<this.seat.getSeats();i++){
+  getData() {
+    for (let i = 0; i < this.seat.getSeats(); i++) {
       this.Name[i] = this.ticket.getName(i);
       this.Surname[i] = this.ticket.getSurname(i);
       this.Luggage[i] = this.ticket.getLuggage(i);
+      console.log(this.Luggage[i])
+      if(this.Luggage[i]){
+        this.LuggageH[i] = "Y"
+      }else {
+        this.LuggageH[i] = "N"
+      }
     }
 
-    this.seatTable[this.seat.getSeats() - 1] = [];
+      this.seatTable[this.seat.getSeats() - 1] = [];
 
-    this._actualDate = this.actualDate._actualDate;
-    console.log(this._reservation);
-  }
+      this._actualDate = this.actualDate._actualDate;
+      console.log(this._reservation);
+    }
 
-  reserve(){
-    this.navigation.setPage(1);
-    this.navigation.goToPage('main');
-  }
+    reserve()
+    {
+      this.navigation.setPage(1);
+      this.navigation.goToPage('main');
+    }
 
 }

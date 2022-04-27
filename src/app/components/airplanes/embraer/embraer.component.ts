@@ -14,6 +14,7 @@ export class EmbraerComponent implements OnInit {
 
   seatLetters = ['A', 'B', 'C', 'D'];
   seats: boolean[][] = [];
+  seatsString: string[][] = [];
   private readonly rowsNumber: number = 10;
   private readonly columnNumber: number = 4;
 
@@ -35,13 +36,13 @@ export class EmbraerComponent implements OnInit {
 
   toggleSelection(row: number, column: number) {
     this.seats[row][column] = !this.seats[row][column];
-    console.log(this.seats[row][column]);
+    console.log(this.seats)
   }
 
   onAddSeat(){
+    console.log(this.seatsString);
     const count = this.seats.flat().filter(Boolean).length;
     this.seat.setSeats(count);
-    console.log(this.seat.getSeats());
   }
 
 
