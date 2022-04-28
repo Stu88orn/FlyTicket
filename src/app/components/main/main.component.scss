@@ -6,7 +6,7 @@ $border__radius: 15px;
 .main__info{
   display: block;
   font-size: 10rem;
-  color: white;
+  color: rgb(255, 255, 255);
   margin-bottom: 50px;
 }
 
@@ -20,8 +20,9 @@ $border__radius: 15px;
 }
 
 .form-control{
-  height: 30px !important;
+  height: 40px !important;
   font-size: 10px;
+  color: #fff;
 }
 
 .btn{
@@ -36,16 +37,30 @@ $border__radius: 15px;
 }
 
 .f_text{
-  color: white;
+  color: rgb(255, 255, 255);
   font-size: 30px;
   margin-top: 30px;
   margin-bottom: 20px;
 }
 
 mat-label{
-  color: white;
+  color: rgb(255, 255, 255);
+  margin-left: 4px;
 }
 
-.full_size{
-  height: 100vh;
+.calendar {
+  margin-top: 1px;
+  text-decoration: none;
+}
+
+option {
+  background-color: #2b2a33;
+}
+
+
+
+@media(max-width:576px){
+.f_text {
+  font-size: 25px;
+}
 }
