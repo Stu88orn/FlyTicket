@@ -14,8 +14,7 @@
                   class="oneSeat"
                   [id]="i + 1 + seatLetters[j]"
                 />
-                <label
-                  (click)="toggleSelection(i, j)"
+                <label (click)="toggleSelection(i, j)"
                   [ngClass]="{ active: seat }"
                   [for]="i + 1 + seatLetters[j]"
                   >{{ i + 1 + seatLetters[j] }}</label>

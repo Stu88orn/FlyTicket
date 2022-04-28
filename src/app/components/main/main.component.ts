@@ -185,7 +185,7 @@ export class MainComponent implements OnInit {
         })
         setTimeout(() => {
           resolve("prom");
-        },1000)
+        },2000)
     })
     prom.then(() => {
       this.day = this.dayOfWeek.getDayOfWeek(this.actualDay);

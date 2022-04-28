@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavigationService} from "../../services/navigation.service";
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-info',
@@ -8,9 +9,16 @@ import {NavigationService} from "../../services/navigation.service";
 })
 export class InfoComponent implements OnInit {
 
-  constructor(private navigation:NavigationService) { }
+  constructor(private navigation:NavigationService, config: NgbModalConfig, private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+  }
 
   ngOnInit(): void {
+  }
+
+  open(content:any) {
+    this.modalService.open(content);
   }
 
   main(){
