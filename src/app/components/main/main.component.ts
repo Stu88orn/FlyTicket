@@ -179,25 +179,28 @@ export class MainComponent implements OnInit {
 
   getFlight() {
     this.isSubmitted = true;
-    const prom = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
           this.dayOfWeek.setFlightResponse(flightResponse);
         })
         setTimeout(() => {
-          resolve("prom");
-        },2000)
-    })
-    prom.then(() => {
+          resolve('');
+        },1000)
+    }).then(() => {
       this.day = this.dayOfWeek.getDayOfWeek(this.actualDay);
     }).then(() => {
       if(this.day != null){
         this.result = this.dayOfWeek.getDay(this.day, this.h__min[0], this.h__min[1]);
       }
     }).then(()=>{
-      this.flightService.setFlightData(this.result);
-      this.navigation.setPage(2);
-      this.navigation.goToPage('choose');
+      if(this.result.length > 0){
+        this.flightService.setFlightData(this.result);
+        this.navigation.setPage(2);
+        this.navigation.goToPage('choose');
+      }
+
     }).catch(() => {
+        document.body.classList.add('staticBackdrop');
         console.log("no flight on main")
       })
 
@@ -207,4 +210,13 @@ export class MainComponent implements OnInit {
     this.isSubmitted = true;
     //this.dayOfWeek.getFlight();
     this.getFlight();
-  }}
+  }
+
+  main(){
+
+    this.navigation.setPage(1);
+    this.navigation.goToPage('main');
+  }
+}
+
+
