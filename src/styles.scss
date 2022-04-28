@@ -15,5 +15,6 @@ body{
   justify-content: center;
   align-items: center;
   background: #181d23;
-  height: calc(100%);
 }
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

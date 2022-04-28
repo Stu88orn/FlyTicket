@@ -9,6 +9,7 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { ChooseFlyComponent } from './components/choose-fly/choose-fly.component';
 import {FormsModule} from "@angular/forms";
 import { InfoComponent } from './components/info/info.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InfoComponent } from './components/info/info.component';
         BrowserAnimationsModule,
         HttpClientModule,
         FormsModule,
+        NgbModule,
 
     ],
   providers: [],
