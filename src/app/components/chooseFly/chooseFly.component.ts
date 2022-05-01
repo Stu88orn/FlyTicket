@@ -3,12 +3,12 @@ import {Flight} from 'src/app/models/flight';
 import {FlightService} from 'src/app/services/api/flight.service';
 import {LanguageService} from 'src/app/services/Language/language.service';
 import {NavigationService} from 'src/app/services/navigation.service';
-import {DayOfWeekService} from "../../services/Converters/day-of-week.service";
+import {DayOfWeekService} from "../../services/Converters/dayOfWeek.service";
 
 @Component({
-  selector: 'app-choose-fly',
-  templateUrl: './choose-fly.component.html',
-  styleUrls: ['./choose-fly.component.scss']
+  selector: 'app-chooseFly',
+  templateUrl: './chooseFly.component.html',
+  styleUrls: ['./chooseFly.component.scss']
 })
 export class ChooseFlyComponent implements OnInit {
   flights: Flight[];
@@ -35,15 +35,10 @@ export class ChooseFlyComponent implements OnInit {
     }).catch(() => {
       console.log('')
     })
-    // this.filteredFlight = Array.from(this.flights.reduce((m, t) => m.set(t.dep_time, t), new Map()).values()).sort();
-    // this.depCity = this.flights[0].dep_iata;
-    // this.arrCity = this.flights[0].arr_iata;
-    // this.checkDay = actualDate._actualDate;
   }
 
   ngOnInit(): void {
     console.log(this.flights);
-
   }
 
   filteredFlights(){
@@ -60,7 +55,7 @@ export class ChooseFlyComponent implements OnInit {
     if (this.flights[value] != null) {
       this.flight.setFlightDetails(this.flights[value]);
       this.navigation.setPage(3);
-      this.navigation.goToPage('Seats');
+      this.navigation.goToPage('seats');
     }
   }
 

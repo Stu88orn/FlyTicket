@@ -8,7 +8,7 @@ import {SeatsService} from "../../../services/seats.service";
 })
 export class EmbraerComponent implements OnInit {
 
-  title__seatList: string = 'Wybór Miejsca'
+  title__seatList: string = 'Please choose your seats'
   nextButton: string = 'Next';
   reservationButton: string = 'Reservation';
 

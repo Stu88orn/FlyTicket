@@ -9,37 +9,37 @@
         </section>
         <div class="container mt-1">
           <nav class="menu" id="#menu">
-            <button class="btn button" [disabled]="showButton1"
-                    [ngClass]="showButton1 === false ? 'button__active' : 'button'">
+            <button class="btn button" [disabled]="findFlyNav"
+                    [ngClass]="findFlyNav === false ? 'button__active' : 'button'">
               <div class="menu-item">
                 <i class="bi bi-search"></i>
                 <p class="mt-2">Find Fly</p>
               </div>
             </button>
 
-            <button class="btn button" [disabled]="showButton2"
-                    [ngClass]="showButton2 === false ? 'button__active' : 'button'">
+            <button class="btn button" [disabled]="selectFlyNav"
+                    [ngClass]="selectFlyNav === false ? 'button__active' : 'button'">
               <div class="menu-item">
                 <i class="bi bi-check2-circle"></i>
                 <p class="mt-2">Select Fly</p>
               </div>
             </button>
-            <button class="btn button" [disabled]="showButton3"
-                    [ngClass]="showButton3 === false ? 'button__active' : 'button'">
+            <button class="btn button" [disabled]="seatsNav"
+                    [ngClass]="seatsNav === false ? 'button__active' : 'button'">
               <div class="menu-item">
                 <i class="bi bi-person-circle"></i>
                 <p class="mt-4">Seats</p>
               </div>
             </button>
-            <button class="btn button" [disabled]="showButton4"
-                    [ngClass]="showButton4 === false ? 'button__active' : 'button'">
+            <button class="btn button" [disabled]="passengersNav"
+                    [ngClass]="passengersNav === false ? 'button__active' : 'button'">
               <div class="menu-item">
                 <i class="bi bi-ticket-detailed"></i>
                 <p class="mt-2">Passengers</p>
               </div>
             </button>
-            <button class="btn button" [disabled]="showButton5"
-                    [ngClass]="showButton5 === false ? 'button__active' : 'button'">
+            <button class="btn button" [disabled]="reservationNav"
+                    [ngClass]="reservationNav === false ? 'button__active' : 'button'">
               <div class="menu-item">
                 <i class="bi bi-journal-text"></i>
                 <p class="mt-2">Reservation</p>

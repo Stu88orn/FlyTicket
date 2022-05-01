@@ -5,7 +5,7 @@ import {FlightService} from "../../services/api/flight.service";
 import {NavigationService} from "../../services/navigation.service";
 
 @Component({
-  selector: 'app-Seats',
+  selector: 'app-seats',
   templateUrl: './seats.component.html',
   styleUrls: ['./seats.component.scss']
 })

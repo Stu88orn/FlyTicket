@@ -3,12 +3,12 @@ import {SeatsService} from "../../../services/seats.service";
 
 
 @Component({
-  selector: 'app-airbus-a320',
-  templateUrl: './airbus-a320.component.html',
-  styleUrls: ['./airbus-a320.component.scss']
+  selector: 'app-airbusA320',
+  templateUrl: './airbusA320.component.html',
+  styleUrls: ['./airbusA320.component.scss']
 })
 export class AirbusA320Component implements OnInit {
-  title__seatList: string = 'Wybór Miejsca'
+  title__seatList: string = 'Please choose your seats'
   nextButton: string = 'Next';
   reservationButton: string = 'Reservation';
 

@@ -13,39 +13,39 @@ export class DayOfWeekService {
   longHourDep: number = 0;
   minDate: Date | undefined;
   h__min: string[] = [];
-  _actualDate : string = '';
+  _actualDate: string = '';
   flightsResponse!: FlightResponse;
-  day : any;
-  result : any;
+  day: any;
+  result: any;
   actualDay: string = '';
 
-  constructor(private  flightService:FlightService,
+  constructor(private flightService: FlightService,
               private navigation: NavigationService) {
   }
 
-  setFlightResponse(value:FlightResponse){
+  setFlightResponse(value: FlightResponse) {
     this.flightsResponse = value;
   }
 
   getDay(day: string, depTimeMin: string, depTimeMax: string) {
-    let a:any;
-      a = this.flightsResponse.response.filter((s) =>
-        s.cs_airline_iata != null
-        && s.days && s.days.includes(day)
-        && s.dep_time >= depTimeMin
-        && s.dep_time <= depTimeMax);
-    if (a.length > 0){
+    let a: any;
+    a = this.flightsResponse.response.filter((s) =>
+      s.cs_airline_iata != null
+      && s.days && s.days.includes(day)
+      && s.dep_time >= depTimeMin
+      && s.dep_time <= depTimeMax);
+    if (a.length > 0) {
       return a;
-    }else{
+    } else {
       return false
     }
   }
 
-  getDate(){
+  getDate() {
     return this._actualDate;
   }
 
-  setActualDate(value:any){
+  setActualDate(value: any) {
     return this._actualDate = value;
   }
 
@@ -57,7 +57,7 @@ export class DayOfWeekService {
 
   getHour(date: string | undefined, hour: number) {
     let result = []
-    if(date){
+    if (date) {
       const spilted = date.split(':', 2);
       let splitedHourMin: number = parseInt(spilted[0]);
       let splitedHourMax: number = parseInt(spilted[0]);
@@ -70,7 +70,7 @@ export class DayOfWeekService {
       }
 
       if (splitedHourMax <= 10 && splitedHourMax >= 0) {
-        result[1] = "0" +  (+(splitedHourMax) + (+hour)).toString()
+        result[1] = "0" + (+(splitedHourMax) + (+hour)).toString()
       } else {
         result[1] = (+(splitedHourMax) + (+hour)).toString()
       }
@@ -90,39 +90,39 @@ export class DayOfWeekService {
     return result
   }
 
-  getDepCity(){
+  getDepCity() {
     return this.depCity;
   }
 
-  setDepCity(value: string){
+  setDepCity(value: string) {
     this.depCity = value;
   }
 
-  getArrCity(){
+  getArrCity() {
     return this.arrCity;
   }
 
-  setArrCity(value:string){
+  setArrCity(value: string) {
     this.arrCity = value;
   }
 
-  getHourDep(){
+  getHourDep() {
     return this.hourDep;
   }
 
-  setHourDep(value:string){
+  setHourDep(value: string) {
     this.hourDep = value;
   }
 
-  getLongHourDep(){
+  getLongHourDep() {
     return this.longHourDep;
   }
 
-  setLongHourDep(value:number){
+  setLongHourDep(value: number) {
     this.longHourDep = value;
   }
 
-  getHMin(){
+  getHMin() {
     return this.h__min = this.getHour(this.hourDep, this.longHourDep);
   }
 
@@ -134,13 +134,13 @@ export class DayOfWeekService {
       })
       setTimeout(() => {
         resolve("prom");
-      },1000)
+      }, 1000)
     })
     prom.then(() => {
       this.result = this.getDay(this.day, this.h__min[0], this.h__min[1]);
       console.log(this.result);
-    }).then(()=>{
-      if(this.result != false){
+    }).then(() => {
+      if (this.result != false) {
         this.flightService.setFlightData(this.result);
         this.navigation.setPage(2);
         this.navigation.goToPage('choose');

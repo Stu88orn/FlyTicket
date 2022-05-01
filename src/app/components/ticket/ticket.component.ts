@@ -1,7 +1,7 @@
 import {Component, DoCheck, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {SeatsService} from "../../services/seats.service"
 import {FlightService} from "../../services/api/flight.service";
-import {DayOfWeekService} from "../../services/Converters/day-of-week.service";
+import {DayOfWeekService} from "../../services/Converters/dayOfWeek.service";
 import {TicketService} from "../../services/ticket.service";
 import {Flight} from "../../models/flight";
 import { Ticket } from 'src/app/models/ticket';

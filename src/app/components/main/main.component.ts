@@ -3,7 +3,7 @@ import { FlightResponse } from '../../models/flightResponse';
 import { FlightService } from '../../services/api/flight.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { DayOfWeekService } from "../../services/Converters/day-of-week.service";
+import { DayOfWeekService } from "../../services/Converters/dayOfWeek.service";
 import { LanguageService } from "../../services/Language/language.service";
 import { NavigationService } from 'src/app/services/navigation.service';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
