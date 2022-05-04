@@ -9,7 +9,7 @@ import {environment} from 'src/environments/environment';
   providedIn: 'root'
 })
 export class FlightService {
-  scheules: string = 'schedules/?';
+  schedules: string = 'schedules/?';
   dep_iata: string = 'dep_iata=';
   arr_iata: string = 'arr_iata=';
   flightData = [];
@@ -26,12 +26,12 @@ export class FlightService {
     return this.http.get<CityResponse>(`${environment.apiUrl}suggest?search=${city}&${environment.apiKEY}`)
   }
 
-  getFlight(depCity: string | undefined, arrCity: string | undefined) {
+  getFlight(depCity: string, arrCity: string) {
     return this.http.get<FlightResponse>(`${environment.apiUrl}routes/?${environment.apiKEY}&dep_iata=${depCity}&arr_iata=${arrCity}`)
   }
 
   getFlightScheules(depCity: string | undefined, arrCity: string | undefined) {
-    return this.http.get<FlightResponse>(`${environment.apiUrl}${this.scheules}${this.dep_iata}${depCity}&${this.arr_iata}${arrCity}&${environment.apiKEY}`)
+    return this.http.get<FlightResponse>(`${environment.apiUrl}${this.schedules}${this.dep_iata}${depCity}&${this.arr_iata}${arrCity}&${environment.apiKEY}`)
   }
 
   setFlightData(value: any){

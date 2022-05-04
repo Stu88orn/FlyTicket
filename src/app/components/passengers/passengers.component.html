@@ -1,5 +1,5 @@
 <div class="m-4">
-  <form>
+  <form [formGroup]="addPassengerFormGroup" (ngSubmit)="show()">
     <div class="row align-items-center g-5">
       <div class="d-flex justify-content-center">
         <h1 class="font-color">Please enter passengers information</h1>
@@ -9,20 +9,30 @@
           <div class="row mt-2 justify-content-center mb-2 gap-3">
             <div class="col-auto font-color">Passenger {{i + 1}} </div>
             <div class="col-auto">
-              <label class="visually-hidden" for="name_{{i}}">Name</label>
-              <input type="text" class="form-control" attr.id="name_{{i}}" placeholder="Name" required>
+              <label class="visually-hidden form-label" for="name_{{i}}">Name</label>
+              <input type="text" class="form-control" attr.id="name_{{i}}" placeholder="Name" required formControlName="passengerName">
+              <mat-error *ngIf="checkError('passengerName', 'required')">Name is required</mat-error>
+              <mat-error *ngIf="checkError('passengerName', 'minLength')">Name should be more than 3 characters</mat-error>
+              <mat-error *ngIf="checkError('passengerName', 'maxLength')">Name should be less than 20 characters</mat-error>
             </div>
             <div class="col-auto">
               <label class="visually-hidden" for="surname_{{i}}">Surname</label>
-              <input type="text" class="form-control" id="surname_{{i}}" placeholder="Surname" required>
+              <input type="text" class="form-control" id="surname_{{i}}" placeholder="Surname" required formControlName="passengerSurName">
+              <mat-error *ngIf="checkError('passengerSurName', 'required')">SurName is required</mat-error>
+              <mat-error *ngIf="checkError('passengerSurName', 'minLength')">SurName should be more than 3 characters</mat-error>
+              <mat-error *ngIf="checkError('passengerSurName', 'maxLength')">SurName should be less than 20 characters</mat-error>
             </div>
             <div class="col-auto">
               <label class="visually-hidden" for="dateOfBirth_{{i}}">Date of Birth</label>
-              <input type="date" class="form-control" id="dateOfBirth_{{i}}" placeholder="Date of birth" required>
+              <input type="date" class="form-control" id="dateOfBirth_{{i}}" placeholder="Date of birth" required formControlName="passengerDateOfBirth">
+              <mat-error *ngIf="checkError('passengerDateOfBirth', 'required')">DateOfBirth is required</mat-error>
             </div>
             <div class="col-auto">
               <label class="visually-hidden" for="passport_{{i}}">Passport</label>
-              <input type="text" class="form-control" id="passport_{{i}}" placeholder="Passport" required>
+              <input type="text" class="form-control" id="passport_{{i}}" placeholder="Passport" required formControlName="passengerPassport">
+              <mat-error *ngIf="checkError('passengerPassport', 'required')">Passport is required</mat-error>
+              <mat-error *ngIf="checkError('passengerPassport', 'minLength')">Passport should be more than 3 characters</mat-error>
+              <mat-error *ngIf="checkError('passengerPassport', 'maxLength')">Passport should be less than 20 characters</mat-error>
             </div>
             <div class="col-auto">
               <div class="form-check">
@@ -34,7 +44,7 @@
         </ng-template>
         <div class="col">
           <div class="d-flex justify-content-end">
-            <button type="submit" class="btn btn-primary" (click)="show()">Reservation</button>
+            <button type="submit" class="btn btn-primary" [disabled]="!addPassengerFormGroup.valid">Reservation</button>
           </div>
         </div>
       </div>

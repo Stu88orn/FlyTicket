@@ -8,7 +8,6 @@ import { LanguageService } from "../../services/Language/language.service";
 import { NavigationService } from 'src/app/services/navigation.service';
 import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE} from "@angular/material/core";
 import {MomentDateAdapter} from "@angular/material-moment-adapter";
-import {error} from "@angular/compiler/src/util";
 
 export const MY_FORMATS = {
   parse: {
@@ -38,8 +37,7 @@ export class MainComponent implements OnInit {
   title__passengersDetails: string = '';
   nextButton: string = '';
   reservationButton: string = '';
-  //status : any = false;
-
+  alarmInfo: string = 'No flight , please check again';
   findFormGroup: any = FormGroup;
 
   depCitys = [
@@ -180,36 +178,34 @@ export class MainComponent implements OnInit {
   getFlight() {
     this.isSubmitted = true;
     return new Promise((resolve, reject) => {
-        this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
-          this.dayOfWeek.setFlightResponse(flightResponse);
-        })
-        setTimeout(() => {
-          resolve('');
-        },1000)
-    }).then(() => {
+        const status = this.flightService.getFlight(this.depCity, this.arrCity).subscribe((flightResponse: FlightResponse) => {
+          if(status){
+            this.dayOfWeek.setFlightResponse(flightResponse);
+            resolve('')
+          }else{
+            reject('');
+          }
+    })})
+  }
+
+  onSubmit() {
+    this.isSubmitted = true;
+    this.getFlight().then(() => {
       this.day = this.dayOfWeek.getDayOfWeek(this.actualDay);
     }).then(() => {
       if(this.day != null){
         this.result = this.dayOfWeek.getDay(this.day, this.h__min[0], this.h__min[1]);
       }
-    }).then(()=>{
+    }).then(() => {
       if(this.result.length > 0){
         this.flightService.setFlightData(this.result);
         this.navigation.setPage(2);
         this.navigation.goToPage('choose');
+    }else{
+        const showAlert = document.getElementById('alarmBox');
+        showAlert!.classList.add('alert-danger');
       }
-
-    }).catch(() => {
-        document.body.classList.add('staticBackdrop');
-        console.log("no flight on main")
-      })
-
-  }
-
-  onSubmit() {
-    this.isSubmitted = true;
-    //this.dayOfWeek.getFlight();
-    this.getFlight();
+    })
   }
 
   main(){
