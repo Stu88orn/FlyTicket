@@ -3,6 +3,7 @@ import {FlightResponse} from '../../models/flightResponse';
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {environment} from 'src/environments/environment';
+import {Ticket} from "../../models/ticket";
 
 
 @Injectable({
@@ -48,5 +49,9 @@ export class FlightService {
 
   setFlightDetails(value:any){
     return this._flightDetails = value;
+  }
+
+  sendTicket(value:Ticket){
+    return this.http.post<Ticket>('http://localhost:3000',value);
   }
 }
