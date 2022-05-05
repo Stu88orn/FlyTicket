@@ -1,116 +1,116 @@
 .active {
-    background-color: rgba(255, 255, 255, 0.2);
-  }
+  background-color: rgba(255, 255, 255, 0.2);
+}
 
-  .panel {
-    display: inline-block;
-    width: 100vw;
-    height: 100%;
-    border: 1px solid #4b5769;
-    border-radius: 15px;
-    overflow: auto;
-  }
+.panel {
+  display: inline-block;
+  width: 100vw;
+  height: 100%;
+  border: 1px solid #4b5769;
+  border-radius: 15px;
+  overflow: auto;
+}
 
-  .panel-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    background-color: #4b5769;
+.panel-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  background-color: #4b5769;
 
-  }
+}
 
-  .panel-right {
-    background-image: linear-gradient(180deg, rgba(55, 64, 76, 1) 0%, rgba(21, 26, 32, 1) 100%);
-  }
+.panel-right {
+  background-image: linear-gradient(180deg, rgba(55, 64, 76, 1) 0%, rgba(21, 26, 32, 1) 100%);
+}
 
-  /* ---------- */
+/* ---------- */
 
-  .date-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+.date-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .date-box .day {
-    font-size: 1rem;
-  }
+.date-box .day {
+  font-size: 1rem;
+}
 
-  .date-box .time {
-    font-size: 2rem;
-    font-weight: bold;
-  }
+.date-box .time {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
-  .date-box .date {
-    font-size: 1rem;
-  }
+.date-box .date {
+  font-size: 1rem;
+}
 
-  /* ---------- */
+/* ---------- */
 
-  .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
+.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
 
-  .button {
-    background: transparent;
-    width: 70%;
-    height: 98px !important;
-    margin: 10px;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-  }
+.button {
+  background: transparent;
+  width: 70%;
+  height: 98px !important;
+  margin: 10px;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
 
-  .button__active {
-    background-color: transparent;
-    background-image: linear-gradient(160deg, rgba(246, 250, 7, 0.25) 0%, rgba(253, 37, 3, 0.788) 100%);
-  }
+.button__active {
+  background-color: transparent;
+  background-image: linear-gradient(160deg, rgba(246, 250, 7, 0.25) 0%, rgba(253, 37, 3, 0.788) 100%);
+}
 
-  .menu a {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    height: 20%;
-    text-decoration: none;
-    color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 15px;
-  }
+.menu a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  height: 20%;
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
 
-  .menu a:hover {
-    background-color: transparent;
-    background-image: linear-gradient(160deg, rgba(0, 110, 255, 0.25) 0%, rgba(9, 255, 0, 0.25) 100%);
-  }
+.menu a:hover {
+  background-color: transparent;
+  background-image: linear-gradient(160deg, rgba(0, 110, 255, 0.25) 0%, rgba(9, 255, 0, 0.25) 100%);
+}
 
-  .menu-item i {
-    font-size: 2rem;
-  }
+.menu-item i {
+  font-size: 2rem;
+}
 
-  .menu-item p {
-    font-size: 1rem;
-    text-transform: uppercase;
-  }
+.menu-item p {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
 
-  .main{
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    border-radius: 15px;
-    margin: 10px;
-  }
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  border-radius: 15px;
+  margin: 10px;
+}
 
-  .f_text{
-    margin-top: 150px;
-  }
+.f_text {
+  margin-top: 150px;
+}
 
-.info-box{
+.info-box {
   padding: 0;
   margin: 0;
 }
